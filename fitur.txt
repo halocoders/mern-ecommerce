@@ -1,8 +1,0 @@
-React Client:
-- ReactJS
-- Material UI
-- Styled Components
-- NodeJS
-
-/Data/Man Jada Wa Jada/Personal/Halocoders/Portfolio/ecommerce/client/build
-\Data\Man Jadda Wa Jada\Personal\Halocoders\Portfolio\ecommerce\client
