@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { popularProducts } from '../data';
+// import { popularProducts } from '../data';
 import Product from './Product';
 import axios from 'axios';
 
@@ -31,6 +31,7 @@ const Products = ({ category, filters, sort }) => {
     getProducts();
   }, [category]);
 
+  // filter
   useEffect(() => {
     category &&
       setFilteredProducts(
@@ -41,6 +42,14 @@ const Products = ({ category, filters, sort }) => {
         )
       );
   }, [category, filters, products]);
+
+  // sort
+  useEffect(() => {
+    if (sort === 'Newest') {
+      setFilteredProducts((prev) => [...prev]);
+    }
+  }, [sort]);
+  console.log(filteredProducts);
 
   return (
     <Container>
