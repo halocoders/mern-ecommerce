@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { login } from '../redux/apiCall';
 import { mobile } from '../responsive';
@@ -48,6 +48,9 @@ const Button = styled.button`
   cursor: pointer;
   margin-bottom: 10px;
 `;
+const ErrorSpan = styled.span`
+  color: red;
+`;
 
 const Link = styled.a`
   margin: 5px 0px;
@@ -61,6 +64,7 @@ const Login = () => {
   const [username, setUsername] = useState();
   const [password, setPass] = useState();
   const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.user);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -81,8 +85,9 @@ const Login = () => {
             onChange={(e) => setPass(e.target.value)}
           />
           <Button type="submit" onClick={handleLogin}>
-            LOGIN
+            {loading ? 'Loading...' : 'LOGIN'}
           </Button>
+          {error && <ErrorSpan>Something wrong</ErrorSpan>}
           <Link>FORGOT THE PASSWORD?</Link>
           <Link href="/register">CREATE A NEW ACCOUNT</Link>
         </Form>

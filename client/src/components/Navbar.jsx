@@ -100,6 +100,10 @@ const Navbar = () => {
   const [menuShow, setMenuShow] = useState(false);
   const quantity = useSelector((state) => state.cart.quantity);
 
+  // const currentUser = JSON.parse(
+  //   JSON.parse(localStorage.getItem('persist:root')).user
+  // ).currentUser;
+
   return (
     <Container>
       <Wrapper>
@@ -125,7 +129,9 @@ const Navbar = () => {
         </MenuContainer>
         <Right isShow={menuShow}>
           <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+          <Link to="/login">
+            <MenuItem>LOGIN</MenuItem>
+          </Link>
           <Link to="/cart" style={{ color: 'black' }}>
             <MenuItem>
               <Badge badgeContent={quantity} color="primary">

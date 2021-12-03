@@ -63,6 +63,7 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 24px;
   ${mobile({ flexDirection: 'column' })}
 `;
 
@@ -73,6 +74,8 @@ const ProductDetail = styled.div`
 
 const Image = styled.img`
   width: 200px;
+  height: 200px;
+  object-fit: cover;
 `;
 
 const Details = styled.div`
@@ -208,7 +211,7 @@ const Cart = () => {
                     <Image src={product.img} />
                     <Details>
                       <ProductName>
-                        <b>Product:</b> {product.name}
+                        <b>Product:</b> {product.title}
                       </ProductName>
                       <ProductId>
                         <b>ID:</b> {product._id.slice(0, 6)}...

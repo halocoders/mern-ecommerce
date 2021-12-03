@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import { publicRequest, userRegister } from '../requestMethod';
 import { mobile } from '../responsive';
 
 const Container = styled.div`
@@ -55,22 +57,45 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await publicRequest.post('/auth/register', {
+        username,
+        email,
+        password,
+      });
+      res.data && window.location.replace('/login');
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
-        <Form>
-          <Input placeholder="name" />
-          <Input placeholder="last name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" />
-          <Input placeholder="confirm password" />
+        <Form onSubmit={handleRegister}>
+          <Input
+            placeholder="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            placeholder="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button>CREATE</Button>
+          <Button type="submit">CREATE</Button>
         </Form>
       </Wrapper>
     </Container>
