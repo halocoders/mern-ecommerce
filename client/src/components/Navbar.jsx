@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Badge } from '@material-ui/core';
 import { Search, ShoppingCartOutlined, Menu } from '@material-ui/icons';
 import styled from 'styled-components';
 import { mobile } from '../responsive';
+import { Link } from 'react-router-dom';
 
 const Container = styled.nav`
   height: 60px;
@@ -48,6 +50,7 @@ const Center = styled.div`
 
 const Logo = styled.h1`
   font-weight: bold;
+  color: black;
   ${mobile({ fontSize: '24px' })}
 `;
 const Right = styled.div`
@@ -95,6 +98,8 @@ const MenuContainer = styled.div`
 
 const Navbar = () => {
   const [menuShow, setMenuShow] = useState(false);
+  const quantity = useSelector((state) => state.cart.quantity);
+
   return (
     <Container>
       <Wrapper>
@@ -106,7 +111,9 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>HALOCODERS.</Logo>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Logo>HALOCODERS.</Logo>
+          </Link>
         </Center>
         <MenuContainer>
           <button
@@ -119,11 +126,13 @@ const Navbar = () => {
         <Right isShow={menuShow}>
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
-          <MenuItem>
-            <Badge badgeContent={4} color="primary">
-              <ShoppingCartOutlined />
-            </Badge>
-          </MenuItem>
+          <Link to="/cart" style={{ color: 'black' }}>
+            <MenuItem>
+              <Badge badgeContent={quantity} color="primary">
+                <ShoppingCartOutlined />
+              </Badge>
+            </MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>
