@@ -10,13 +10,21 @@ const Container = styled.div`
   ${mobile({ padding: '0px', flexDirection: 'column' })}
 `;
 
+const Title = styled.h2`
+  margin-top: 32px;
+  padding: 20px;
+`;
+
 const Categories = () => {
   return (
-    <Container>
-      {categories.map((item, i) => (
-        <CategoryItem key={i} item={item} />
-      ))}
-    </Container>
+    <>
+      <Title>Popular Categories</Title>
+      <Container>
+        {categories.map((item, i) => (
+          <CategoryItem key={i} item={item} />
+        ))}
+      </Container>
+    </>
   );
 };
 

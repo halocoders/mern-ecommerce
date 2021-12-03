@@ -25,30 +25,32 @@ const Info = styled.div`
 
 const Container = styled.div`
   flex: 1;
-  margin: 5px;
-  min-width: 280px;
-  height: 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f5fbfd;
+  margin: 5px 5px 24px 5px;
   position: relative;
   &:hover ${Info} {
     opacity: 1;
   }
 `;
 
-const Circle = styled.div`
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
+const ContainerImg = styled.div`
+  min-width: 380px;
+  height: 450px;
 `;
 
 const Image = styled.img`
-  height: 75%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
   z-index: 2;
+`;
+const Title = styled.h2`
+  margin-top: 16px;
+  color: black;
+`;
+
+const Desc = styled.p`
+  margin-top: 8px;
+  color: black;
 `;
 
 const Icon = styled.div`
@@ -70,9 +72,14 @@ const Icon = styled.div`
 const Product = ({ item }) => {
   return (
     <Container>
-      <Circle />
-      <Image src={item.img} />
-      <Info>
+      <Link to={`/product/${item._id}`} style={{ textDecoration: 'none' }}>
+        <ContainerImg>
+          <Image src={item.img} />
+        </ContainerImg>
+        <Title>{item.title}</Title>
+        <Desc>{item.desc}</Desc>
+      </Link>
+      {/* <Info>
         <Icon>
           <ShoppingCartOutlined />
         </Icon>
@@ -84,7 +91,7 @@ const Product = ({ item }) => {
         <Icon>
           <FavoriteBorderOutlined />
         </Icon>
-      </Info>
+      </Info> */}
     </Container>
   );
 };

@@ -61,11 +61,14 @@ const Products = ({ category, filters, sort }) => {
   }, [sort]);
 
   return (
-    <Container>
-      {category
-        ? filteredProducts.map((item, i) => <Product key={i} item={item} />)
-        : products.map((item, i) => <Product key={i} item={item} />)}
-    </Container>
+    <>
+      <h2 style={{ padding: '0 20px', marginTop: '32px' }}>Popular Products</h2>
+      <Container>
+        {category
+          ? filteredProducts.map((item, i) => <Product key={i} item={item} />)
+          : products.map((item, i) => <Product key={i} item={item} />)}
+      </Container>
+    </>
   );
 };
 
