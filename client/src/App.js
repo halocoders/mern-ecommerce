@@ -12,9 +12,11 @@ import Cart from './pages/Cart';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Success from './pages/Success';
+import { useSelector } from 'react-redux';
 
 function App() {
-  const user = true;
+  const user = useSelector((state) => state.user.currentUser);
+  console.log(user);
   return (
     <Router>
       <Routes>

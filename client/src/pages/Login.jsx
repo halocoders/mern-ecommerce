@@ -1,4 +1,7 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { login } from '../redux/apiCall';
 import { mobile } from '../responsive';
 
 const Container = styled.div`
@@ -59,14 +62,31 @@ const Link = styled.a`
 `;
 
 const Login = () => {
+  const [username, setUsername] = useState();
+  const [password, setPass] = useState();
+  const dispatch = useDispatch();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login(dispatch, { username, password });
+  };
+
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
-        <Form>
-          <Input placeholder="username" />
-          <Input placeholder="password" />
-          <Button>LOGIN</Button>
+        <Form onSubmit={handleLogin}>
+          <Input
+            placeholder="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            placeholder="password"
+            onChange={(e) => setPass(e.target.value)}
+          />
+          <Button type="submit" onClick={handleLogin}>
+            LOGIN
+          </Button>
           <Link>FORGOT THE PASSWORD?</Link>
           <Link href="/register">CREATE A NEW ACCOUNT</Link>
         </Form>
