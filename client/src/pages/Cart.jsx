@@ -91,6 +91,7 @@ const ProductColor = styled.div`
   height: 20px;
   border-radius: 50%;
   background-color: ${(props) => props.color};
+  border: 1px solid #adadad;
 `;
 
 const ProductSize = styled.span``;
@@ -212,7 +213,7 @@ const Cart = () => {
                       <ProductId>
                         <b>ID:</b> {product._id.slice(0, 6)}...
                       </ProductId>
-                      <ProductColor color="black" />
+                      <ProductColor color={product.color} />
                       <ProductSize>
                         <b>Size:</b> {product.size}
                       </ProductSize>
