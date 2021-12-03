@@ -1,9 +1,4 @@
 import React from 'react';
-import {
-  FavoriteBorderOutlined,
-  SearchOutlined,
-  ShoppingCartOutlined,
-} from '@material-ui/icons';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -53,21 +48,21 @@ const Desc = styled.p`
   color: black;
 `;
 
-const Icon = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-  transition: all 0.5s ease;
-  &:hover {
-    background-color: #e9f5f5;
-    transform: scale(1.1);
-  }
-`;
+// const Icon = styled.div`
+//   width: 40px;
+//   height: 40px;
+//   border-radius: 50%;
+//   background-color: white;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin: 10px;
+//   transition: all 0.5s ease;
+//   &:hover {
+//     background-color: #e9f5f5;
+//     transform: scale(1.1);
+//   }
+// `;
 
 const Product = ({ item }) => {
   return (

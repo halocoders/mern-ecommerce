@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { publicRequest, userRegister } from '../requestMethod';
+import { publicRequest } from '../requestMethod';
 import { mobile } from '../responsive';
 
 const Container = styled.div`
