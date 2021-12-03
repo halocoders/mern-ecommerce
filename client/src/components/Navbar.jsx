@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Badge } from '@material-ui/core';
 import { Search, ShoppingCartOutlined, Menu } from '@material-ui/icons';
 import styled from 'styled-components';
@@ -95,6 +96,8 @@ const MenuContainer = styled.div`
 
 const Navbar = () => {
   const [menuShow, setMenuShow] = useState(false);
+  const quantity = useSelector((state) => state.cart.quantity);
+
   return (
     <Container>
       <Wrapper>
@@ -120,7 +123,7 @@ const Navbar = () => {
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
           <MenuItem>
-            <Badge badgeContent={4} color="primary">
+            <Badge badgeContent={quantity} color="primary">
               <ShoppingCartOutlined />
             </Badge>
           </MenuItem>
